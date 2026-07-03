@@ -1,0 +1,44 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/renderer/*"],
+      "@rms/constants": ["../../packages/constants/src/index.ts"],
+      "@rms/types": ["../../packages/types/src/index.ts"],
+      "@rms/api-contracts": ["../../packages/api-contracts/src/index.ts"],
+      "@rms/validation": ["../../packages/validation/src/index.ts"],
+      "@rms/theme": ["../../packages/theme/src/index.ts"],
+      "@rms/utils": ["../../packages/utils/src/index.ts"],
+      "@rms/hooks": ["../../packages/hooks/src/index.ts"],
+      "@rms/ui": ["../../packages/ui/src/index.ts"]
+    }
+  },
+  "include": ["src/renderer/**/*"],
+  "exclude": ["node_modules", "dist"],
+  "references": [
+    { "path": "../../packages/constants" },
+    { "path": "../../packages/types" },
+    { "path": "../../packages/api-contracts" },
+    { "path": "../../packages/validation" },
+    { "path": "../../packages/theme" },
+    { "path": "../../packages/utils" },
+    { "path": "../../packages/hooks" },
+    { "path": "../../packages/ui" }
+  ]
+}

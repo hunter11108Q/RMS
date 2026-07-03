@@ -1,0 +1,23 @@
+{
+  "name": "@rms/hooks",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@rms/constants": "*",
+    "@rms/types": "*",
+    "@rms/api-contracts": "*",
+    "zustand": "^4.5.2",
+    "@tanstack/react-query": "^5.37.1"
+  },
+  "devDependencies": {
+    "react": "18.2.0",
+    "typescript": "^5.4.5",
+    "rimraf": "^5.0.5"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react-native",
+    "strict": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*", "App.tsx"],
+  "references": [
+    { "path": "../../packages/constants" },
+    { "path": "../../packages/types" },
+    { "path": "../../packages/api-contracts" },
+    { "path": "../../packages/theme" },
+    { "path": "../../packages/utils" },
+    { "path": "../../packages/validation" }
+  ]
+}

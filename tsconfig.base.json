@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "ignoreDeprecations": "5.0",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@rms/constants": ["packages/constants/src/index.ts"],
+      "@rms/types": ["packages/types/src/index.ts"],
+      "@rms/api-contracts": ["packages/api-contracts/src/index.ts"],
+      "@rms/validation": ["packages/validation/src/index.ts"],
+      "@rms/theme": ["packages/theme/src/index.ts"],
+      "@rms/utils": ["packages/utils/src/index.ts"],
+      "@rms/hooks": ["packages/hooks/src/index.ts"],
+      "@rms/ui": ["packages/ui/src/index.ts"]
+    }
+  }
+}

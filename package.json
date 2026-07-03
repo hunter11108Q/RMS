@@ -1,0 +1,36 @@
+{
+  "name": "restaurant-management-system",
+  "version": "1.0.0",
+  "private": true,
+  "overrides": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "description": "Commercial Restaurant Management System (RMS) Monorepo",
+  "scripts": {
+    "dev:backend": "npm run dev --workspace=apps/backend",
+    "dev:desktop": "npm run dev --workspace=apps/desktop",
+    "build:all": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "prepare": "husky install"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@types/compression": "^1.8.1",
+    "compression": "^1.8.1",
+    "express-rate-limit": "^8.5.2"
+  }
+}

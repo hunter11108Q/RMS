@@ -1,0 +1,64 @@
+name: RMS Monorepo CI/CD Build Pipeline
+
+trigger:
+  branches:
+    include:
+      - main
+      - release/*
+
+stages:
+  - stage: BuildAndValidate
+    displayName: Lint, Compile & Test workspaces
+    jobs:
+      - job: TestAndCheck
+        displayName: Run Audits
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '20.x'
+            displayName: 'Install Node 20'
+
+          - script: |
+              npm ci
+            displayName: 'Clean Install Dependencies'
+
+          - script: |
+              npm run lint
+            displayName: 'Execute Linter Checks'
+
+          - script: |
+              npm run build:all
+            displayName: 'Verify Monorepo TypeScript compilation'
+
+          - script: |
+              npm test
+            displayName: 'Execute Unit Tests Suites'
+
+  - stage: Packaging
+    displayName: Package POS & Backend artifacts
+    dependsOn: BuildAndValidate
+    condition: succeeded()
+    jobs:
+      - job: PackageDesktop
+        displayName: Electron Installer Target
+        pool:
+          vmImage: 'windows-latest'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '20.x'
+
+          - script: |
+              npm ci
+              npm run build --workspace=apps/desktop
+              cd apps/desktop
+              npm run electron:build
+            displayName: 'Electron NSIS Installer Build'
+
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: 'apps/desktop/dist-installer'
+              ArtifactName: 'windows-installer'
+              publishLocation: 'Container'
